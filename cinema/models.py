@@ -43,7 +43,7 @@ class Actor(models.Model):
 def create_custom_path(instance, filename):
     filename = (f"{slugify(instance.title)}-{uuid.uuid4()}"
                 + pathlib.Path(filename).suffix)
-    return pathlib.Path("upload/movies/") / pathlib.Path(filename)
+    return os.path.join("upload", "movies", filename)
 
 
 class Movie(models.Model):

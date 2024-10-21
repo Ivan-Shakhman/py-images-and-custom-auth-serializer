@@ -34,7 +34,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class AuthTokenSerializer(serializers.Serializer):
-    email = serializers.CharField(
+    email = serializers.EmailField(
         label=_("Email"),
         max_length=255,
         write_only=True,

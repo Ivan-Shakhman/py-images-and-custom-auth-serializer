@@ -1,11 +1,8 @@
-import os
-import pathlib
-import uuid
-
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
-from django.utils.text import slugify
+
+from cinema.utils import create_custom_path
 
 
 class CinemaHall(models.Model):
@@ -38,12 +35,6 @@ class Actor(models.Model):
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-
-
-def create_custom_path(instance, filename):
-    filename = (f"{slugify(instance.title)}-{uuid.uuid4()}"
-                + pathlib.Path(filename).suffix)
-    return os.path.join("upload", "movies", filename)
 
 
 class Movie(models.Model):
